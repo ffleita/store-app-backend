@@ -7,18 +7,16 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Producto implements Serializable {
+public class Prestacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_producto")
     private Integer id;
     private String nombreProducto;
-    @ManyToOne(targetEntity = Categoria.class)
-    private Categoria categoria;
+    @OneToMany(mappedBy = "prestacion")
+    private PrestacionTurno prestacionTurno;
     private BigDecimal precioUnitario;
     private Integer codigoDeBarras;
-    private Boolean borradoLogico;
 }
